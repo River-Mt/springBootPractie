@@ -27,4 +27,11 @@ public class PostsService {
 
         return id;
     }
+
+    public PostsResponseDto findById(Long id) {
+        Posts entity = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id = " + id));
+
+        return new PostsResponseDto(entity);
+    }
 }
