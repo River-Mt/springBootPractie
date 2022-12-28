@@ -2,6 +2,7 @@ package com.riverMt.springboot.web;
 
 import com.riverMt.springboot.service.posts.PostsService;
 import com.riverMt.springboot.web.dto.PostsSaveRequestDto;
+import com.riverMt.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,4 +17,8 @@ public class PostsApiController {
         return postsService.save(requestDto);
     }
 
+    @PutMapping("/api/v1/posts/{id}")
+    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
+        return postsService.update(id, requestDto);
+    }
 }
